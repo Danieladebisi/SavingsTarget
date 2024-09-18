@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="SavingsTarget is a mobile application that helps your affordability with our easy-to-use tool" />
+        <meta name="author" content="SavingsTarget" />
+
+        <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+        <meta property="og:site_name" content="" /> <!-- website name -->
+        <meta property="og:site" content="" /> <!-- website link -->
+        <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+        <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+        <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+        <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+        <meta name="twitter:card" content="summary_large_image" /> <!-- to have large image post format in Twitter -->
+
+        <!-- Webpage Title -->
+        <title>Calculator</title>
+
+        <!-- Styles -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+        <link href="css/fontawesome-all.css" rel="stylesheet" />
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+        <link href="css/calculator.css" rel="stylesheet" />
+        <link href="css/magnific-popup.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+
+          <!-- Favicon  -->
+        <link rel="icon" href="images/SavingsTarget_logo.jpeg" />
+    </head>
+    <body data-spy="scroll" data-target=".fixed-top">
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container sm:px-4 lg:px-8 flex flex-wrap items-center justify-between lg:flex-nowrap">
+                
+                <!-- Text Logo - Use this if you don't have a graphic logo -->
+                <!-- <a class="text-gray-800 font-semibold text-3xl leading-4 no-underline page-scroll" href="index.html">Pavo</a> -->
+
+                <!-- Image Logo -->
+                <a class="inline-block mr-4 py-0.5 text-xl whitespace-nowrap hover:no-underline focus:no-underline" href="index.html">
+                    <img src="images/SavingsTarget_logo.jpeg" alt="alternative" class="h-8" />
+                </a>
+
+                <button class="background-transparent rounded text-xl leading-none hover:no-underline focus:no-underline lg:hidden lg:text-gray-400" type="button" data-toggle="offcanvas">
+                    <span class="navbar-toggler-icon inline-block w-8 h-8 align-middle"></span>
+                </button>
+
+                <div class="navbar-collapse offcanvas-collapse lg:flex lg:flex-grow lg:items-center" id="navbarsExampleDefault">
+                    <ul class="pl-0 mt-3 mb-2 ml-auto flex flex-col list-none lg:mt-0 lg:mb-0 lg:flex-row">
+                        <li>
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="calculator.html">Calculator</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="terms.html">About</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    </span>
+                </div> <!-- end of navbar-collapse -->
+            </div> <!-- end of container -->
+        </nav> <!-- end of navbar -->
+        <div class="container">
+            <h1>SavingsTarget Calculator</h1>
+        
+            <form id="savings-form" >
+                <div class="form-group">
+                    <label for="goal">Select Savings Goal:</label>
+                    <select id="goal" required>
+                        <option value="">Choose a goal</option>
+                        <option value="car">Car</option>
+                        <option value="house">House</option>
+                        <option value="vacation">Vacation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+        
+                <div id="other-goal-container" class="form-group hidden">
+                    <label for="other-goal">Specify Your Goal:</label>
+                    <input type="text" id="other-goal" placeholder="Enter your savings goal">
+                </div>
+        
+                <div class="form-group">
+                    <label for="price">Desired Price of the Goal:</label>
+                    <div class="input-wrapper">
+                        <span class="dollar-sign">$</span>
+                        <input type="number" id="price" placeholder="Enter amount" required>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="income">Monthly Income:</label>
+                    <div class="input-wrapper">
+                        <span class="dollar-sign">$</span>
+                        <input type="number" id="income" placeholder="Enter monthly income" required>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="expenses">Monthly Expenses:</label>
+                    <div class="input-wrapper">
+                        <span class="dollar-sign">$</span>
+                        <input type="number" id="expenses" placeholder="Enter monthly expenses" required>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="existing-loan">Do you have an existing loan?</label>
+                    <select id="existing-loan" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+        
+                <div id="existing-loan-details" class="hidden">
+                    <div class="form-group">
+                        <label for="existing-loan-amount">Existing Loan Amount:</label>
+                        <div class="input-wrapper">
+                            <span class="dollar-sign">$</span>
+                            <input type="number" id="existing-loan-amount" placeholder="Enter loan amount">
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="existing-loan-monthly-payment">Monthly Loan Payment:</label>
+                        <div class="input-wrapper">
+                            <span class="dollar-sign">$</span>
+                            <input type="number" id="existing-loan-monthly-payment" placeholder="Enter monthly payment">
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="existing-loan-interest">Loan Interest Rate (%):</label>
+                        <input type="number" id="existing-loan-interest" placeholder="Enter interest rate" step="0.1">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="existing-loan-term">Loan Term (months):</label>
+                        <input type="number" id="existing-loan-term" placeholder="Enter loan term in months">
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="new-loan">Will you take a loan to purchase what you're saving for?</label>
+                    <select id="new-loan" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+        
+                <div id="new-loan-details" class="hidden">
+                    <div class="form-group">
+                        <label for="new-loan-amount">New Loan Amount:</label>
+                        <div class="input-wrapper">
+                            <span class="dollar-sign">$</span>
+                            <input type="number" id="new-loan-amount" placeholder="Enter loan amount">
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="new-loan-interest">New Loan Interest Rate (%):</label>
+                        <input type="number" id="new-loan-interest" placeholder="Enter interest rate" step="0.1">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="new-loan-term">Loan Term (months):</label>
+                        <input type="number" id="new-loan-term" placeholder="Enter loan term in months">
+                    </div>
+                </div>
+        
+                <button type="submit">Calculate</button>
+            </form>
+        
+            <div id="results" class="hidden">
+                <h2>Results</h2>
+                <p id="savings-goal"></p>
+                <p id="monthly-savings"></p>
+                <p id="months-to-save"></p>
+                <p id="existing-loan-info"></p>
+                <p id="new-loan-info"></p>
+                <div class="button-group">
+                    <button id="recalculate">Calculate Again</button>
+                    <button id="read-blog">Read Blog Articles</button>
+                </div>
+            </div>
+        </div>      
+
+        <!-- Scripts -->
+        <script src="js/calculator.js"></script> <!-- Custom scripts -->
+        <script src="js/jquery.min.js"></script> <!-- jQuery for JavaScript plugins -->
+        <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+        <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+        <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+        <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    </body>
+</html>

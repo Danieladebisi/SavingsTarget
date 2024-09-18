@@ -1,0 +1,78 @@
+* Our Story Section */
+.our-story {
+    background-color: #fff;
+    padding: 60px 0;
+}
+
+.our-story h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    color: #114070;
+}
+
+.story-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.story-content img {
+    width: 45%;
+    border-radius: 8px;
+    transition: opacity 1.5s ease-in-out;
+    opacity: 0;
+}
+
+.story-text {
+    width: 50%;
+}
+
+.story-text p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+/* Team Section */
+.team {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.team h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    color: #114070;
+}
+
+.team-members {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+    width: 30%;
+    margin-bottom: 40px;
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.team-member img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.team-member h3 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.team-member p {
+    font-size: 1.1em;
+    color: #777;
+}
