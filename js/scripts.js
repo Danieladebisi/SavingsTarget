@@ -192,3 +192,20 @@
 
 })(jQuery);
 
+document.addEventListener('DOMContentLoaded', function() {
+	const navbarToggler = document.querySelector('[data-toggle="offcanvas"]');
+	const navbarCollapse = document.querySelector('.navbar-collapse');
+  
+	navbarToggler.addEventListener('click', function() {
+	  navbarCollapse.classList.toggle('show');
+	});
+  
+	// Close menu when clicking outside
+	document.addEventListener('click', function(event) {
+	  const isClickInside = navbarCollapse.contains(event.target) || navbarToggler.contains(event.target);
+	  if (!isClickInside && navbarCollapse.classList.contains('show')) {
+		navbarCollapse.classList.remove('show');
+	  }
+	});
+  });
+

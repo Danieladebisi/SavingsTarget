@@ -506,7 +506,7 @@ input[type="checkbox"] {
     align-items: center;
     font-family: 'Montserrat', sans-serif; /* Bold Montserrat font */
     font-weight: 900; /* Strong bold weight */
-    font-size: 1.1rem; /* Larger font size for bold appearance */
+    font-size: 0.1rem; /* Larger font size for bold appearance */
     letter-spacing: 0.5px; /* Slight letter spacing for clarity */
     line-height: 1.75rem;
     transition: all 0.2s ease;
@@ -517,8 +517,8 @@ input[type="checkbox"] {
     font-family: 'Montserrat', sans-serif; /* Ensure font applies to nav links */
     font-size: 1.15rem; /* Larger text size for visibility */
     font-weight: 700; /* Bolder link weight */
-    padding: 0.75rem 1.25rem; /* Increase padding for larger click area */
-    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 0.5rem 1rem; /* Increase padding for larger click area */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar .nav-link:hover, 
@@ -586,20 +586,62 @@ input[type="checkbox"] {
 /********************/
 /*     Features     */
 /********************/
+/* Introduction Section */
+.pt-4.pb-14.text-center {
+    padding-top: 4rem;
+    padding-bottom: 3.5rem;
+    text-align: center;
+    background-color: #f9f9f9; /* Light background for emphasis */
+    color: #333333; /* Darker text for readability */
+    font-size: 1.125rem; /* Slightly larger font for readability */
+    line-height: 1.8; /* Spaced-out line height for easier reading */
+    max-width: 850px; /* Constraining the text block for better readability */
+    margin: 0 auto; /* Center the text block */
+    font-family: 'Poppins', sans-serif; /* Modern font family */
+}
+
+/* Styling the Headline to stand out */
+.pt-4.pb-14.text-center h2 {
+    font-size: 2rem; /* Larger font size for headline */
+    font-weight: 700; /* Bold weight for emphasis */
+    color: #114070; /* Brand color for the headline */
+    margin-bottom: 1.5rem; /* Adds space between headline and paragraph */
+    text-transform: capitalize; /* Making the headline more professional */
+}
+
+/* Styling paragraphs within the introduction section */
+.pt-4.pb-14.text-center p {
+    font-size: 1rem;
+    color: #555555; /* Slightly softer than the heading */
+    margin-bottom: 1.5rem; /* Ensures spacing between paragraphs */
+    line-height: 1.8; /* Spacing for readability */
+}
+
+/* Add subtle emphasis to certain key parts of text */
+.pt-4.pb-14.text-center em {
+    color: #ff6600; /* Accent color for emphasis */
+    font-weight: 600; /* Slightly bold */
+    font-style: normal; /* Regular style but highlighted */
+}
+
+/* Card Section - Cards Structure */
 .cards-1 {
     padding-top: 4rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 3.5rem; /* More balanced padding for bottom */
     text-align: center;
+    background-color: #ffffff; /* White background for a clean look */
 }
 
+/* Styling for individual cards */
 .cards-1 .card {
     margin-bottom: 3.5rem;
-    padding: 3.125rem 1rem 2.125rem 1rem;
-    border: none;
-    border-radius: 16px;
-    background-color: #f1f9fc;
+    padding: 3.125rem 1.5rem; /* More padding for better spacing */
+    border-radius: 16px; /* Soft rounded corners for a modern look */
+    background-color: #f1f9fc; /* Light blue for a soft and modern card look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
+/* Card Image Section */
 .cards-1 .card-image {
     margin-bottom: 1.5rem;
 }
@@ -611,13 +653,24 @@ input[type="checkbox"] {
     margin-left: auto;
 }
 
+/* Card Body Content */
 .cards-1 .card-body {
     padding: 0;
 }
 
+/* Card Title Styling */
 .cards-1 .card-title {
-    margin-bottom: 0.375rem;
+    margin-bottom: 0.75rem; /* Increased space between title and text */
+    font-size: 1.25rem; /* Larger font for titles */
+    font-weight: 600; /* Bold weight to emphasize titles */
 }
+
+/* Paragraph styling inside cards */
+.cards-1 .card-body p {
+    font-size: 1rem;
+    color: #666666; /* Gray text for paragraph contrast */
+}
+
 
 /****************************/
 /*     Details Lightbox     */
@@ -1013,6 +1066,12 @@ a:hover.back-to-top {
     /* Navigation */
 
     
+    .modern-navbar {
+        background-color: #f1f9fc;
+        padding: 0.75rem 0;
+        transition: all 0.3s ease;
+    }
+    
     .navbar {
         background-color: transparent;
         flex-wrap: nowrap;
@@ -1021,17 +1080,17 @@ a:hover.back-to-top {
         padding-right: 0;
         padding-top: 1.75rem;
     }
-
+    
     .navbar-collapse {
         flex-basis: auto;
     }
-
+    
     .navbar.top-nav-collapse {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         background-color: #f1f9fc;
     }
-
+    
     .offcanvas-collapse {
         position: static;
         top: auto;
@@ -1044,25 +1103,80 @@ a:hover.back-to-top {
         overflow-y: visible;
         visibility: visible;
     }
-
+    
     .offcanvas-collapse.open {
         -webkit-transform: none;
         transform: none;
     }
-
+    
     .nav-link {
         padding-right: 0.625rem;
         padding-left: 0.625rem;
     }
-
+    
     .dropdown-menu {
         position: absolute;
         margin-top: 0.25rem;
         box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.05);
     }
-
+    
     .dropdown-divider {
         width: 90%;
+    }
+    
+    .navbar-toggler {
+        display: none;
+    }
+    
+    @media (max-width: 991px) {
+        .navbar-toggler {
+            display: block;
+            background: transparent;
+            border: none;
+            padding: 0.5rem;
+        }
+    
+        .navbar-toggler-icon {
+            display: inline-block;
+            width: 1.5em;
+            height: 1.5em;
+            vertical-align: middle;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-size: 100% 100%;
+        }
+    
+        .navbar-collapse {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: #f1f9fc;
+            transition: all 0.3s ease-in-out;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+    
+        .navbar-collapse.show {
+            display: block;
+            left: 0;
+        }
+    
+        .navbar-nav {
+            flex-direction: column;
+        }
+    
+        .nav-item {
+            margin-bottom: 1rem;
+        }
+    }
+    
+    @media (min-width: 992px) {
+        .navbar-collapse {
+            display: flex !important;
+            flex-basis: auto;
+        }
     }
 
     /* end of navigation */
