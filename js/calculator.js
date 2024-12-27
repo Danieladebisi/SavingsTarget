@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const printResultsButton = document.getElementById('print-results');
     const savingsChartElement = document.getElementById('savings-chart');
 
-    // Event listeners for form controls
     goalSelect.addEventListener('change', function() {
         otherGoalContainer.classList.toggle('hidden', this.value !== 'other');
     });
