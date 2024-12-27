@@ -6,11 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const existingLoanDetails = document.getElementById('existing-loan-details');
     const newLoanSelect = document.getElementById('new-loan');
     const newLoanDetails = document.getElementById('new-loan-details');
-    const loadingElement = document.getElementById('loading');
     const resultsSection = document.getElementById('results');
     const recalculateButton = document.getElementById('recalculate');
     const readBlogButton = document.getElementById('read-blog');
+    const saveResultsButton = document.getElementById('save-results');
+    const printResultsButton = document.getElementById('print-results');
+    const savingsChartElement = document.getElementById('savings-chart');
 
+    // Event listeners for form controls
     goalSelect.addEventListener('change', function() {
         otherGoalContainer.classList.toggle('hidden', this.value !== 'other');
     });
@@ -31,12 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
     recalculateButton.addEventListener('click', function() {
         resultsSection.classList.add('hidden');
         form.reset();
-        window.scrollTo(0, 0); // Scroll to top of the page
+        window.scrollTo(0, 0);
     });
 
     readBlogButton.addEventListener('click', function() {
-        window.location.href = 'https://example.com/savings-tips'; // Replace with your blog URL
+        window.location.href = 'https://blog.savingstarget.com';
     });
+
+    saveResultsButton.addEventListener('click', saveResults);
+    printResultsButton.addEventListener('click', printResults);
 
     function calculateSavings() {
         const goal = goalSelect.value;
@@ -46,14 +52,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const expenses = parseFloat(document.getElementById('expenses').value);
         const hasExistingLoan = existingLoanSelect.value === 'yes';
         const hasNewLoan = newLoanSelect.value === 'yes';
+        const initialSavings = parseFloat(document.getElementById('initial-savings').value) || 0;
+        const interestRate = parseFloat(document.getElementById('interest-rate').value) || 0;
+        const compoundFrequency = document.getElementById('compound-frequency').value;
+        const inflationRate = parseFloat(document.getElementById('inflation-rate').value) || 0;
 
-        let existingLoanAmount = 0;
-        let existingLoanMonthlyPayment = 0;
-        let existingLoanInterest = 0;
-        let existingLoanTerm = 0;
-        let newLoanAmount = 0;
-        let newLoanInterest = 0;
-        let newLoanTerm = 0;
+        let existingLoanAmount = 0, existingLoanMonthlyPayment = 0, existingLoanInterest = 0, existingLoanTerm = 0;
+        let newLoanAmount = 0, newLoanInterest = 0, newLoanTerm = 0;
 
         if (hasExistingLoan) {
             existingLoanAmount = parseFloat(document.getElementById('existing-loan-amount').value);
@@ -72,21 +77,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalSavingsNeeded = price - newLoanAmount;
         const monthsToSave = Math.ceil(totalSavingsNeeded / monthlySavings);
 
-        displayResults(goal, otherGoal, monthlySavings, monthsToSave, hasExistingLoan, existingLoanAmount, existingLoanInterest, existingLoanTerm, hasNewLoan, newLoanAmount, newLoanInterest, newLoanTerm);
+        const totalSavings = calculateTotalSavings(initialSavings, monthlySavings, interestRate, compoundFrequency, monthsToSave);
+        const inflationAdjustedSavings = calculateInflationAdjustedSavings(totalSavingsNeeded, inflationRate, monthsToSave);
+
+        displayResults(goal, otherGoal, monthlySavings, monthsToSave, hasExistingLoan, existingLoanAmount, existingLoanInterest, existingLoanTerm, hasNewLoan, newLoanAmount, newLoanInterest, newLoanTerm, totalSavings, inflationAdjustedSavings);
+        createSavingsChart(initialSavings, monthlySavings, interestRate, compoundFrequency, monthsToSave);
     }
 
-    function displayResults(goal, otherGoal, monthlySavings, monthsToSave, hasExistingLoan, existingLoanAmount, existingLoanInterest, existingLoanTerm, hasNewLoan, newLoanAmount, newLoanInterest, newLoanTerm) {
+    function displayResults(goal, otherGoal, monthlySavings, monthsToSave, hasExistingLoan, existingLoanAmount, existingLoanInterest, existingLoanTerm, hasNewLoan, newLoanAmount, newLoanInterest, newLoanTerm, totalSavings, inflationAdjustedSavings) {
         const savingsGoal = document.getElementById('savings-goal');
         const monthlySavingsElement = document.getElementById('monthly-savings');
         const monthsToSaveElement = document.getElementById('months-to-save');
         const existingLoanInfo = document.getElementById('existing-loan-info');
         const newLoanInfo = document.getElementById('new-loan-info');
+        const totalSavingsElement = document.getElementById('total-savings');
+        const inflationAdjustedSavingsElement = document.getElementById('inflation-adjusted-savings');
 
         const goalName = goal === 'other' ? otherGoal : goal;
 
         savingsGoal.textContent = `To buy your ${goalName}, you will need to save:`;
         monthlySavingsElement.textContent = `$${monthlySavings.toFixed(2)} every month`;
         monthsToSaveElement.textContent = `for ${monthsToSave} months (${(monthsToSave / 12).toFixed(1)} years)`;
+        totalSavingsElement.textContent = `Total savings: $${totalSavings.toFixed(2)}`;
+        inflationAdjustedSavingsElement.textContent = `Total savings needed (inflation-adjusted): $${inflationAdjustedSavings.toFixed(2)}`;
 
         if (hasExistingLoan) {
             existingLoanInfo.textContent = `Existing Loan: $${existingLoanAmount.toFixed(2)} at ${existingLoanInterest}% interest for ${existingLoanTerm} months`;
@@ -108,5 +121,78 @@ document.addEventListener('DOMContentLoaded', function() {
         const monthlyRate = interestRate / 100 / 12;
         const numberOfPayments = loanTerm;
         return (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+    }
+
+    function calculateTotalSavings(initialSavings, monthlySavings, interestRate, compoundFrequency, months) {
+        const r = interestRate / 100;
+        const n = getCompoundFrequency(compoundFrequency);
+        const t = months / 12;
+        const compoundFactor = Math.pow(1 + r/n, n*t);
+        return initialSavings * compoundFactor + monthlySavings * ((compoundFactor - 1) / (r/n));
+    }
+
+    function calculateInflationAdjustedSavings(totalSavings, inflationRate, months) {
+        const years = months / 12;
+        return totalSavings * Math.pow(1 + inflationRate/100, years);
+    }
+
+    function getCompoundFrequency(frequency) {
+        switch(frequency) {
+            case 'daily': return 365;
+            case 'monthly': return 12;
+            case 'quarterly': return 4;
+            case 'annually': return 1;
+            default: return 12;
+        }
+    }
+
+    function createSavingsChart(initialSavings, monthlySavings, interestRate, compoundFrequency, months) {
+        const ctx = savingsChartElement.getContext('2d');
+        const labels = Array.from({length: months + 1}, (_, i) => i);
+        const data = labels.map(month => calculateTotalSavings(initialSavings, monthlySavings, interestRate, compoundFrequency, month));
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Savings Growth',
+                    data: data,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Total Savings ($)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Months'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function saveResults() {
+        const resultsText = resultsSection.innerText;
+        const blob = new Blob([resultsText], {type: 'text/plain'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'savings_results.txt';
+        a.click();
+    }
+
+    function printResults() {
+        window.print();
     }
 });

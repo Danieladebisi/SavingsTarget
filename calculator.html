@@ -1,216 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-                <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZS5TQM8J2"></script>
-        <script>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZS5TQM8J2"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-YZS5TQM8J2');
-        </script>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    </script>
 
-        <!-- SEO Meta Tags -->
-        <meta name="description" content="SavingsTarget is a mobile application that helps your affordability with our easy-to-use tool" />
-        <meta name="author" content="SavingsTarget" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
-        <meta property="og:site_name" content="" /> <!-- website name -->
-        <meta property="og:site" content="" /> <!-- website link -->
-        <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
-        <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
-        <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
-        <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
-        <meta name="twitter:card" content="summary_large_image" /> <!-- to have large image post format in Twitter -->
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="SavingsTarget is a mobile application that helps your affordability with our easy-to-use tool" />
+    <meta name="author" content="SavingsTarget" />
 
-        <!-- Webpage Title -->
-        <title>Calculator</title>
+    <!-- OG Meta Tags -->
+    <meta property="og:site_name" content="SavingsTarget" />
+    <meta property="og:site" content="https://savingstarget.com" />
+    <meta property="og:title" content="SavingsTarget Calculator" />
+    <meta property="og:description" content="Easily calculate your savings goals with SavingsTarget" />
+    <meta property="og:image" content="images/SavingsTargetIcon.png" />
+    <meta property="og:url" content="https://savingstarget.com/calculator" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-        <!-- Styles -->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-        <link href="css/fontawesome-all.css" rel="stylesheet" />
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
-        <link href="css/calculator.css" rel="stylesheet" />
-        <link href="css/magnific-popup.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
+    <!-- Webpage Title -->
+    <title>SavingsTarget Calculator</title>
 
-          <!-- Favicon  -->
-        <link rel="icon" href="images/SavingsTargetIcon.png" sizes="32x32, 192x192" />
-    </head>
-    <body data-spy="scroll" data-target=".fixed-top">
+    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="css/fontawesome-all.css" rel="stylesheet" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="css/calculator.css" rel="stylesheet" />
+    <link href="css/magnific-popup.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="icon" href="images/SavingsTargetIcon.png" sizes="32x32, 192x192" />
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container sm:px-4 lg:px-8 flex flex-wrap items-center justify-between lg:flex-nowrap">
+            <a class="inline-block mr-4 py-0.5 text-xl whitespace-nowrap hover:no-underline focus:no-underline" href="index.html">
+                <img src="./images/SavingsTarget Logo.png" alt="SavingsTarget Logo" class="h-auto w-48 font-bold" />
+            </a>
+            <button class="background-transparent rounded text-xl leading-none hover:no-underline focus:no-underline lg:hidden lg:text-gray-400" type="button" data-toggle="offcanvas">
+                <span class="navbar-toggler-icon inline-block w-8 h-8 align-middle"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse lg:flex lg:flex-grow lg:items-center">
+                <ul class="pl-0 mt-3 mb-2 ml-auto flex flex-col list-none lg:mt-0 lg:mb-0 lg:flex-row">
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="calculator.html">Calculator</a></li>
+                    <li><a class="nav-link" href="terms.html">About</a></li>
+                    <li><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <!-- Navigation -->
-        <nav class="navbar">
-            <div class="container sm:px-4 lg:px-8 flex flex-wrap items-center justify-between lg:flex-nowrap">
-                
-                <!-- Text Logo - Use this if you don't have a graphic logo -->
-                <!-- <a class="text-gray-800 font-semibold text-3xl leading-4 no-underline page-scroll" href="index.html">Pavo</a> -->
-
-                <!-- Image Logo -->
-                <a class="inline-block mr-4 py-0.5 text-xl whitespace-nowrap hover:no-underline focus:no-underline" href="index.html">
-                    <img src="./images/SavingsTarget Logo.png" alt="Savings Target Logo" class="h-auto w-48 font-bold" />
-                </a>
-
-                <button class="background-transparent rounded text-xl leading-none hover:no-underline focus:no-underline lg:hidden lg:text-gray-400" type="button" data-toggle="offcanvas">
-                    <span class="navbar-toggler-icon inline-block w-8 h-8 align-middle"></span>
-                </button>
-
-                <div class="navbar-collapse offcanvas-collapse lg:flex lg:flex-grow lg:items-center" id="navbarsExampleDefault">
-                    <ul class="pl-0 mt-3 mb-2 ml-auto flex flex-col list-none lg:mt-0 lg:mb-0 lg:flex-row">
-                        <li>
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="calculator.html">Calculator</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="terms.html">About</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                    </span>
-                </div> <!-- end of navbar-collapse -->
-            </div> <!-- end of container -->
-        </nav> <!-- end of navbar -->
-        <div class="container">
-            <h1>SavingsTarget Calculator</h1>
-        
-            <form id="savings-form" >
-                <div class="form-group">
-                    <label for="goal">Select Savings Goal:</label>
-                    <select id="goal" required>
-                        <option value="">Choose a goal</option>
-                        <option value="car">Car</option>
-                        <option value="house">House</option>
-                        <option value="vacation">Vacation</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-        
-                <div id="other-goal-container" class="form-group hidden">
-                    <label for="other-goal">Specify Your Goal:</label>
-                    <input type="text" id="other-goal" placeholder="Enter your savings goal">
-                </div>
-        
-                <div class="form-group">
-                    <label for="price">Desired Price of the Goal:</label>
-                    <div class="input-wrapper">
-                        <span class="dollar-sign">$</span>
-                        <input type="number" id="price" placeholder="Enter amount" required>
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <label for="income">Monthly Income:</label>
-                    <div class="input-wrapper">
-                        <span class="dollar-sign">$</span>
-                        <input type="number" id="income" placeholder="Enter monthly income" required>
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <label for="expenses">Monthly Expenses:</label>
-                    <div class="input-wrapper">
-                        <span class="dollar-sign">$</span>
-                        <input type="number" id="expenses" placeholder="Enter monthly expenses" required>
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <label for="existing-loan">Do you have an existing loan?</label>
-                    <select id="existing-loan" required>
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-        
-                <div id="existing-loan-details" class="hidden">
-                    <div class="form-group">
-                        <label for="existing-loan-amount">Existing Loan Amount:</label>
-                        <div class="input-wrapper">
-                            <span class="dollar-sign">$</span>
-                            <input type="number" id="existing-loan-amount" placeholder="Enter loan amount">
-                        </div>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="existing-loan-monthly-payment">Monthly Loan Payment:</label>
-                        <div class="input-wrapper">
-                            <span class="dollar-sign">$</span>
-                            <input type="number" id="existing-loan-monthly-payment" placeholder="Enter monthly payment">
-                        </div>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="existing-loan-interest">Loan Interest Rate (%):</label>
-                        <input type="number" id="existing-loan-interest" placeholder="Enter interest rate" step="0.1">
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="existing-loan-term">Loan Term (months):</label>
-                        <input type="number" id="existing-loan-term" placeholder="Enter loan term in months">
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <label for="new-loan">Will you take a loan to purchase what you're saving for?</label>
-                    <select id="new-loan" required>
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-        
-                <div id="new-loan-details" class="hidden">
-                    <div class="form-group">
-                        <label for="new-loan-amount">New Loan Amount:</label>
-                        <div class="input-wrapper">
-                            <span class="dollar-sign">$</span>
-                            <input type="number" id="new-loan-amount" placeholder="Enter loan amount">
-                        </div>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="new-loan-interest">New Loan Interest Rate (%):</label>
-                        <input type="number" id="new-loan-interest" placeholder="Enter interest rate" step="0.1">
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="new-loan-term">Loan Term (months):</label>
-                        <input type="number" id="new-loan-term" placeholder="Enter loan term in months">
-                    </div>
-                </div>
-        
-                <button type="submit">Calculate</button>
-            </form>
-        
-            <div id="results" class="hidden">
-                <h2>Results</h2>
-                <p id="savings-goal"></p>
-                <p id="monthly-savings"></p>
-                <p id="months-to-save"></p>
-                <p id="existing-loan-info"></p>
-                <p id="new-loan-info"></p>
-                <div class="button-group">
-                    <button id="recalculate">Calculate Again</button>
-                    <a href="https://blog.savingstarget.com">
-                        <button id="read-blog">Read Blog Articles</button>
-                      </a>
+    <div class="container">
+        <h1>SavingsTarget Calculator</h1>
+        <form id="savings-form">
+            <!-- Savings Goal Section -->
+            <div class="form-group">
+                <label for="goal">Select Savings Goal:</label>
+                <select id="goal" required>
+                    <option value="">Choose a goal</option>
+                    <option value="car">Car</option>
+                    <option value="house">House</option>
+                    <option value="vacation">Vacation</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div id="other-goal-container" class="form-group hidden">
+                <label for="other-goal">Specify Your Goal:</label>
+                <input type="text" id="other-goal" placeholder="Enter your savings goal">
+            </div>
+            
+            <!-- Price and Savings Details -->
+            <div class="form-group">
+                <label for="price">Desired Price of the Goal:</label>
+                <div class="input-wrapper">
+                    <span class="dollar-sign">$</span>
+                    <input type="number" id="price" placeholder="Enter amount" required>
                 </div>
             </div>
-        </div>      
+            <div class="form-group">
+                <label for="initial-savings">Initial Savings Amount:</label>
+                <div class="input-wrapper">
+                    <span class="dollar-sign">$</span>
+                    <input type="number" id="initial-savings" placeholder="Enter initial savings" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="interest-rate">Annual Interest Rate (%):</label>
+                <input type="number" id="interest-rate" placeholder="Enter interest rate" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="compound-frequency">Compounding Frequency:</label>
+                <select id="compound-frequency" required>
+                    <option value="daily">Daily</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="annually">Annually</option>
+                </select>
+            </div>
+            
+            <!-- Additional Details -->
+            <div class="form-group">
+                <label for="income">Monthly Income:</label>
+                <div class="input-wrapper">
+                    <span class="dollar-sign">$</span>
+                    <input type="number" id="income" placeholder="Enter monthly income" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="expenses">Monthly Expenses:</label>
+                <div class="input-wrapper">
+                    <span class="dollar-sign">$</span>
+                    <input type="number" id="expenses" placeholder="Enter monthly expenses" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inflation-rate">Expected Annual Inflation Rate (%):</label>
+                <input type="number" id="inflation-rate" placeholder="Enter inflation rate" step="0.1">
+            </div>
+            
+            <button type="submit">Calculate</button>
+        </form>
 
-        <!-- Scripts -->
-        <script src="js/calculator.js"></script> <!-- Custom scripts -->
-        <script src="js/jquery.min.js"></script> <!-- jQuery for JavaScript plugins -->
-        <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-        <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
-        <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
-        <script src="js/scripts.js"></script> <!-- Custom scripts -->
-    </body>
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <p id="savings-goal"></p>
+            <p id="monthly-savings"></p>
+            <p id="months-to-save"></p>
+            <p id="total-savings"></p>
+            <p id="interest-earned"></p>
+            <p id="inflation-adjusted-savings"></p>
+            <div id="savings-chart"></div>
+            <div class="button-group">
+                <button id="recalculate">Calculate Again</button>
+                <button id="save-results">Save Results</button>
+                <button id="print-results">Print Results</button>
+                <a href="https://blog.savingstarget.com">
+                    <button id="read-blog">Read Blog Articles</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Educational Content Section -->
+    <div id="educational-content">
+        <h3>Financial Terms Explained</h3>
+        <div id="financial-terms"></div>
+        <h3>Savings Tips</h3>
+        <ul id="savings-tips"></ul>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/calculator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery.magnific-popup.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
 </html>
