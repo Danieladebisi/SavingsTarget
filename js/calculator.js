@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         resultsSection.classList.remove('hidden');
+        alert(`Total Savings: $${totalSavings.toFixed(2)}\nPrincipal Amount: $${(initialSavings + (monthlySavings * monthsToSave)).toFixed(2)}\nTotal Interest Earned: $${(totalSavings - initialSavings - (monthlySavings * monthsToSave)).toFixed(2)}`);
     }
 
     function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
@@ -194,4 +195,65 @@ document.addEventListener('DOMContentLoaded', function() {
     function printResults() {
         window.print();
     }
+
+    // JavaScript for Savings Calculator
+    document.getElementById("calculate").addEventListener("click", function(e) {
+        e.preventDefault();
+
+        // Retrieve input values
+        const initialSavings = parseFloat(document.getElementById("initialSavings").value) || 0;
+        const monthlyContribution = parseFloat(document.getElementById("monthlyContribution").value) || 0;
+        const interestRate = parseFloat(document.getElementById("interestRate").value) / 100 || 0;
+        const timePeriod = parseInt(document.getElementById("timePeriod").value) || 0;
+        const interestType = document.getElementById("interestType").value;
+        const compoundingFrequency = parseInt(document.getElementById("compoundingFrequency").value) || 1;
+
+        // Validation
+        if (timePeriod <= 0) {
+            alert("Please enter a valid time period.");
+            return;
+        }
+
+        // Calculation
+        let totalSavings = initialSavings;
+        let totalInterest = 0;
+
+        if (interestType === "simple") {
+            totalInterest = (initialSavings + (monthlyContribution * timePeriod)) * interestRate * timePeriod;
+            totalSavings += totalInterest + (monthlyContribution * timePeriod);
+        } else if (interestType === "compound") {
+            for (let month = 1; month <= timePeriod * 12; month++) {
+                totalSavings += monthlyContribution;
+                totalSavings += (totalSavings * (interestRate / compoundingFrequency));
+            }
+            totalInterest = totalSavings - (initialSavings + (monthlyContribution * timePeriod * 12));
+        }
+
+        // Display Results
+        document.getElementById("resultDisplay").innerHTML = `
+            <p><strong>Total Savings:</strong> $${totalSavings.toFixed(2)}</p>
+            <p><strong>Principal Amount:</strong> $${(initialSavings + (monthlyContribution * timePeriod * 12)).toFixed(2)}</p>
+            <p><strong>Total Interest Earned:</strong> $${totalInterest.toFixed(2)}</p>
+        `;
+
+        // Update Chart (if implemented)
+        if (typeof updateChart === "function") {
+            updateChart(totalSavings, totalInterest);
+        }
+
+        alert(`Total Savings: $${totalSavings.toFixed(2)}\nPrincipal Amount: $${(initialSavings + (monthlyContribution * timePeriod * 12)).toFixed(2)}\nTotal Interest Earned: $${totalInterest.toFixed(2)}`);
+    });
+
+    // Clear Inputs
+    document.getElementById("clear").addEventListener("click", function(e) {
+        e.preventDefault();
+
+        document.getElementById("calculatorForm").reset();
+        document.getElementById("resultDisplay").innerHTML = "";
+
+        // Clear Chart (if implemented)
+        if (typeof clearChart === "function") {
+            clearChart();
+        }
+    });
 });

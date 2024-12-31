@@ -130,22 +130,25 @@
             <button type="submit">Calculate</button>
         </form>
 
-        <div id="results" class="hidden">
-            <h2>Results</h2>
-            <p id="savings-goal"></p>
-            <p id="monthly-savings"></p>
-            <p id="months-to-save"></p>
-            <p id="total-savings"></p>
-            <p id="interest-earned"></p>
-            <p id="inflation-adjusted-savings"></p>
-            <div id="savings-chart"></div>
-            <div class="button-group">
-                <button id="recalculate">Calculate Again</button>
-                <button id="save-results">Save Results</button>
-                <button id="print-results">Print Results</button>
-                <a href="https://blog.savingstarget.com">
-                    <button id="read-blog">Read Blog Articles</button>
-                </a>
+        <div id="results-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Results</h2>
+                <p id="savings-goal"></p>
+                <p id="monthly-savings"></p>
+                <p id="months-to-save"></p>
+                <p id="total-savings"></p>
+                <p id="interest-earned"></p>
+                <p id="inflation-adjusted-savings"></p>
+                <div id="savings-chart"></div>
+                <div class="button-group">
+                    <button id="recalculate">Calculate Again</button>
+                    <button id="save-results">Save Results</button>
+                    <button id="print-results">Print Results</button>
+                    <a href="https://blog.savingstarget.com">
+                        <button id="read-blog">Read Blog Articles</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
